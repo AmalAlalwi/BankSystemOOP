@@ -7,6 +7,8 @@
 #include "clsDeleteClientScreen.h"
 #include "clsUpdateClientScreen.h"
 #include "clsFindClientScreen.h"
+#include "clsTransactionsScreen.h"
+#include "clsManageUsersScreen.h"
 #include <iomanip>
 using namespace std;
 class clsMainScreen :protected clsScreen
@@ -43,10 +45,10 @@ class clsMainScreen :protected clsScreen
 		clsFindClientScreen::ShowFindClientScreen();
 	}
 	static void _ShowTransactionsClientScreen() {
-		cout << "Transactions clients will be here\n";
+		clsTransactionsScreen::ShowTransactionsScreen();
 	}
 	static void _ShowManageUsersScreen() {
-		cout << "Manage Users will be here\n";
+		clsManageUsersScreen::ShowManageUsersScreen();
 	}
 	static void _PerformMainMenueOptions(enMainMenueOptions Option) {
 		switch (Option)	
