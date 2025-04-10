@@ -116,19 +116,20 @@ public:
 	bool MarkedForDeleted() {
 		return _MarkedForDeleted;
 	}
-	void Print() {
-		cout << "Info: \n";
-		cout << "___________________________________\n";
-		cout << "AccountNumber " << AccountNumber()<<endl;
-		cout << "FirstName:   " << FirstName << endl;
-		cout << "LastName:    " << LastName << endl;
-		cout << "FullName:    " << FullName() << endl;
-		cout << "Email:       " << Email << endl;
-		cout << "PhoneNumber: " << PhoneNumber << endl;
-		cout << "PinCode:     " << PinCode << endl;
-		cout << "AccountBalance " << AccountBalance << endl;
-		cout << "___________________________________\n";
-	}
+	//No UI Related Code Inside Object
+	//void Print() {
+	//	cout << "Info: \n";
+	//	cout << "___________________________________\n";
+	//	cout << "AccountNumber " << AccountNumber()<<endl;
+	//	cout << "FirstName:   " << FirstName << endl;
+	//	cout << "LastName:    " << LastName << endl;
+	//	cout << "FullName:    " << FullName() << endl;
+	//	cout << "Email:       " << Email << endl;
+	//	cout << "PhoneNumber: " << PhoneNumber << endl;
+	//	cout << "PinCode:     " << PinCode << endl;
+	//	cout << "AccountBalance " << AccountBalance << endl;
+	//	cout << "___________________________________\n";
+	//}
 	static clsBankClient Find(string AccountNumber) {
 		fstream myfile;
 		myfile.open("Clients.txt", ios::in);
