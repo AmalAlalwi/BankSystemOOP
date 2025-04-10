@@ -225,5 +225,14 @@ public:
 		AccountBalance += Amount;
 		Save();
 	}
+	 bool Withdraw(float Amount) {
+		 if (Amount > AccountBalance) {
+			 return false;
+		 }
+		 else {
+			 AccountBalance -= Amount;
+			 Save();
+		 }
+	 }
 };
 
