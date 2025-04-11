@@ -2,6 +2,11 @@
 #include <iostream>
 #include "clsScreen.h"
 #include "clsInputValidate.h"
+#include "clsUsersListScreen.h"
+#include "clsAddNewUserScreen.h"
+#include "clsDeleteUserScreen.h"
+#include "clsUpdateUserScreen.h"
+#include "clsFindUserScreen.h"
 class clsManageUsersScreen :protected clsScreen
 {
 	enum enManageUSer {
@@ -21,14 +26,19 @@ class clsManageUsersScreen :protected clsScreen
 
 	}
 	static void _ShowListUsersScreen() {
+		clsUsersListScreen::ShowClientsList();
 	}
 	static void _ShowAddNewUserScreen() {
+		clsAddNewUserScreen::ShowAddNewUserScreen();
 	}
 	static void _ShowUpdateUserScreen() {
+		clsUpdateUserScreen::ShoeUpdateUserScreen();
 	}
 	static void _ShowDeleteUserScreen() {
+		clsDeleteUserScreen::ShowDeleteUserScreen();
 	}
 	static void _ShowFindUserScreen() {
+		clsFindUserScreen::ShowFindUserScreen();
 	}
 	static void _PerformManageUsersOptions(enManageUSer Option) {
 		switch (Option)	
@@ -85,8 +95,8 @@ public:
 		cout << setw(37) << left << "" << "=============================================================\n";
 		cout << setw(37) << left << "" << "\t[1] Show List Users\n";
 		cout << setw(37) << left << "" << "\t[2] Add New User\n";
-		cout << setw(37) << left << "" << "\t[3] Update User\n";
-		cout << setw(37) << left << "" << "\t[4] Delete User\n";
+		cout << setw(37) << left << "" << "\t[3] Delete User\n";
+		cout << setw(37) << left << "" << "\t[4] Update User\n";
 		cout << setw(37) << left << "" << "\t[5] Find User\n";
 		cout << setw(37) << left << "" << "\t[6] Main Menue\n";
 		_PerformManageUsersOptions((enManageUSer)_ReadManageUsersOption());
