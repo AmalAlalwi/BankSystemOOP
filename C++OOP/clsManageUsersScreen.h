@@ -88,6 +88,9 @@ class clsManageUsersScreen :protected clsScreen
 	}
 public:
 	static void ShowManageUsersScreen() {
+		if (!CheckAccessRights(CurrentUser.pManageUser)) {
+			return;
+		}
 		system("cls");
 		_DrawScreenHeader("\tManage Users Screen");
 		cout << setw(37) << left << "" << "=============================================================\n";

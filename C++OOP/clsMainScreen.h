@@ -1,5 +1,8 @@
 #pragma once
 #include<iostream>
+#include <iomanip>
+#include "Global.h"
+#include "clsUser.h"
 #include"clsScreen.h"
 #include "clsInputValidate.h"
 #include "clsClientsListScreen.h"
@@ -9,17 +12,16 @@
 #include "clsFindClientScreen.h"
 #include "clsTransactionsScreen.h"
 #include "clsManageUsersScreen.h"
-#include <iomanip>
-using namespace std;
+#include "clsLoginRegisterListScreen.h"
 class clsMainScreen :protected clsScreen
 {
 	enum enMainMenueOptions {
 		enListClient = 1, enAddNewClient = 2, enUpdateClient = 3, enDeleteClient = 4, enFindClient = 5, enTransactions = 6,
-		enManageUsers = 7, enExit = 8
+		enManageUsers = 7,enLoginRegister=8 ,enExit = 9
 	};
 	static short _ReadMainMenueOption() {
-		cout << setw(35) << left <<""<< "\tchoose what do you want to do from 1 to 8:";
-		short Choice = clsInputValidate::ReadIntNumberBetween(1, 8);
+		cout << setw(35) << left <<""<< "\tchoose what do you want to do from 1 to 9:";
+		short Choice = clsInputValidate::ReadIntNumberBetween(1, 9);
 		return Choice;
 	}
 	static void _GoBackToMainMenue()
@@ -29,6 +31,7 @@ class clsMainScreen :protected clsScreen
 		ShowMainScreen();
 
 	}
+	
 	static void _ShowListClientsScreen() {
 		clsClientsListScreen::ShowClientsList();
 	}
@@ -49,6 +52,12 @@ class clsMainScreen :protected clsScreen
 	}
 	static void _ShowManageUsersScreen() {
 		clsManageUsersScreen::ShowManageUsersScreen();
+	}
+	static void _ShowLoginRegisterScreen() {
+		clsLoginRegisterListScreen::ShowLoginsRegisterScreen();
+	}
+	static void _Logout() {
+		CurrentUser = clsUser::Find("", "");
 	}
 	static void _PerformMainMenueOptions(enMainMenueOptions Option) {
 		switch (Option)	
@@ -102,10 +111,16 @@ class clsMainScreen :protected clsScreen
 			_GoBackToMainMenue();
 			break;
 		}
+		case clsMainScreen::enLoginRegister:{
+			system("cls");
+			_ShowLoginRegisterScreen();
+			_GoBackToMainMenue();
+			break;
+		}
 		case clsMainScreen::enExit:
 		{
 			system("cls");
-			_GoBackToMainMenue();
+			_Logout();
 			break;
 		}
 		default:
@@ -126,7 +141,8 @@ class clsMainScreen :protected clsScreen
 		cout << setw(37) << left<<"" << "\t[5] Find Client\n";
 		cout << setw(37) << left<<"" << "\t[6] Transactios\n";
 		cout << setw(37) << left<<"" << "\t[7] Mange Users\n";
-		cout << setw(37) << left<<"" << "\t[8] Logout\n";
+		cout << setw(37) << left<<"" << "\t[8] Logins Register\n";
+		cout << setw(37) << left<<"" << "\t[9] Logout\n";
 		_PerformMainMenueOptions((enMainMenueOptions)_ReadMainMenueOption());
 	}
 };
